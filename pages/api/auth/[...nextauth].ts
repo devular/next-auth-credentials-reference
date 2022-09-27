@@ -15,12 +15,24 @@ export const authOptions = {
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials, req) {
-        const user = await prisma.user.findFirst({
-          where: { email: credentials?.email },
+        const submittedCredentials = credentials;
+        // Find user by email
+        const userToCheck = await prisma.user.findFirst({
+          where: { email: submittedCredentials?.email },
         });
-        if (user?.password && credentials?.password)
-          if (await argon2.verify(user?.password, credentials?.password)) {
-            return user;
+        // Do a fast check
+        if (userToCheck?.password && submittedCredentials?.password)
+          if (
+            // Do a cryptographically secure check
+            await argon2.verify(
+              userToCheck?.password,
+              submittedCredentials?.password
+            )
+          ) {
+            // Return the user object
+            // You can also fetch more data from the database at this point
+            // If you want the session to store more user data like, roles, team memberships, etc.
+            return userToCheck;
           }
         return null;
       },

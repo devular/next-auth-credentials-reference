@@ -43,7 +43,7 @@ const Register: NextPage = () => {
     if (response.status == 200) {
       if (responseData.success) {
         await signIn('credentials', {
-          redirect: true,
+          callbackUrl: '/app/dashboard',
           email: data.email,
           password: data.password,
         });
