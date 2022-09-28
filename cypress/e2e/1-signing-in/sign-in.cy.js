@@ -27,7 +27,7 @@ describe('Signing in to the reference app', () => {
     cy.get('input[name="email"]').type('test@test.com');
     cy.get('input[name="password"]').type('testtest');
     cy.get('button[type="submit"').click();
-    cy.getCookie('next-auth.session-token').should('exist');
     cy.url().should('include', '/app/dashboard');
+    cy.getCookie('next-auth.session-token').should('exist');
   });
 });

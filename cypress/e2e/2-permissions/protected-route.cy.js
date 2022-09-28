@@ -20,6 +20,7 @@ describe('Accessing protected routes', () => {
     cy.get('input[name="email"]').type('test@test.com');
     cy.get('input[name="password"]').type('testtest');
     cy.get('button[type="submit"').click();
+    cy.url().should('include', '/app/dashboard');
     cy.getCookie('next-auth.session-token').should('exist');
     cy.visit('http://localhost:3000/protected-route');
     cy.url().should('include', '/protected-route');
@@ -32,6 +33,7 @@ describe('Accessing protected routes', () => {
     cy.get('input[name="email"]').type('test@test.com');
     cy.get('input[name="password"]').type('testtest');
     cy.get('button[type="submit"').click();
+    cy.url().should('include', '/app/dashboard');
     cy.getCookie('next-auth.session-token').should('exist');
     cy.visit('http://localhost:3000/app/dashboard');
     cy.url().should('include', '/app/dashboard');
