@@ -7,7 +7,7 @@ describe('Signing out clears cookies', () => {
     cy.visit('http://localhost:3000');
   });
 
-  it('Signs in and sets cookie', () => {
+  it('Clears cookie after sign-out', () => {
     cy.get('[data-cy="sign-in-list-item"]').click();
     cy.url().should('include', '/sign-in');
     cy.get('input[name="email"]').type('test@test.com');
