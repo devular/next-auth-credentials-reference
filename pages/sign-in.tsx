@@ -35,10 +35,10 @@ const SignIn: NextPage = () => {
         <h2>Sign in to the app</h2>
         <p>
           Here we use <code>{'import {signIn} from next-auth/react'}</code> to
-          login
+          sign in
         </p>
       </section>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} data-cy="sign-in-form">
         <fieldset>
           <label>Email Address</label>
           <input
