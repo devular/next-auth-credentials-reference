@@ -9,8 +9,8 @@
     "lint": "next lint",
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
-    "e2e": "next dev start-server-and-test start http://localhost:3000 cypress",
-    "e2e:headless": "next build && start-server-and-test start http://localhost:3000 cypress:headless"
+    "e2e": "start-server-and-test dev http://localhost:3000 cypress",
+    "e2e:headless": "DATABASE_URL=\"file:./test.db\" acknext build && start-server-and-test start http://localhost:3000 cypress:headless"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.8",
