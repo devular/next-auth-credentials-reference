@@ -17,8 +17,8 @@ describe('Accessing protected routes', () => {
     cy.visit('http://localhost:3000');
     cy.get('[data-cy="sign-in-list-item"]').click();
     cy.url().should('include', '/sign-in');
-    cy.get('input[name="email"]').type('test@test.com');
-    cy.get('input[name="password"]').type('testtest');
+    cy.get('input[name="email"]').type('fakeuser@test.com');
+    cy.get('input[name="password"]').type('fakepassword');
     cy.get('button[type="submit"').click();
     cy.url().should('include', '/app/dashboard');
     cy.getCookie('next-auth.session-token').should('exist');
@@ -30,8 +30,8 @@ describe('Accessing protected routes', () => {
     cy.visit('http://localhost:3000');
     cy.get('[data-cy="sign-in-list-item"]').click();
     cy.url().should('include', '/sign-in');
-    cy.get('input[name="email"]').type('test@test.com');
-    cy.get('input[name="password"]').type('testtest');
+    cy.get('input[name="email"]').type('fakeuser@test.com');
+    cy.get('input[name="password"]').type('fakepassword');
     cy.get('button[type="submit"').click();
     cy.url().should('include', '/app/dashboard');
     cy.getCookie('next-auth.session-token').should('exist');

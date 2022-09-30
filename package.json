@@ -7,10 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cypress": "cypress open",
-    "cypress:headless": "cypress run",
-    "e2e": "next dev start-server-and-test start http://localhost:3000 cypress",
-    "e2e:headless": "next build && start-server-and-test start http://localhost:3000 cypress:headless"
+    "cypress": "NODE_ENV=test DATABASE_URL=\"file:./test.db\" npm run test:teardown && npm run test:setup && cypress open",
+    "cypress:headless": "NODE_ENV=test cypress run",
+    "e2e": "start-server-and-test dev http://localhost:3000 cypress",
+    "test:setup": "DATABASE_URL=\"file:./test.db\" node scripts/test-setup.js",
+    "test:teardown": "DATABASE_URL=\"file:./test.db\" node scripts/test-teardown.js",
+    "e2e:headless": "DATABASE_URL=\"file:./test.db\" npm run test:setup && next build && NODE_ENV=test start-server-and-test start http://localhost:3000 cypress:headless && npm run test:teardown"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.8",
