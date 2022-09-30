@@ -18,8 +18,8 @@ const seed = async () => {
   // prisma create test user
   await prisma.user.create({
     data: {
-      email: 'test-user@test.com',
-      password: await argon2.hash('testtesttest'),
+      email: 'fakeuser@test.com',
+      password: await argon2.hash('fakepassword'),
       name: 'Test User',
     },
   });

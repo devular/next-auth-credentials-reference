@@ -39,3 +39,7 @@ next-env.d.ts
 
 cypress/videos
 cypress/screenshots
+
+## Database
+prisma/*.db
+!prisma/test.db
